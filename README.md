@@ -101,18 +101,41 @@ https://app.dadosfera.ai/pt-BR/catalog/data-assets/23c16621-4138-4447-9f62-acbf1
 
 ---
 
-## Item 3 — Dadosfera | Explorar 🟡
+## Item 3 — Dadosfera | Explorar ✅
 
 **Atividades realizadas:**
-- Catalogação dos datasets principais
-- Construção de dicionário de dados
-- Organização lógica dos dados seguindo conceito de Data Lake (raw, staging, analytics)
+- Catalogação das tabelas carregadas na plataforma Dadosfera
+- Descrição funcional de cada dataset diretamente no catálogo
+- Exploração inicial dos dados para entendimento de schema, tipos e granularidade
+- Criação de dicionário de dados documentado no notebook do projeto
 
-🔗 **Catálogo de dados:**  
-<!-- link ou prints -->
+**Observações:**
+- A descrição detalhada das colunas foi documentada externamente no notebook, servindo como dicionário de dados oficial do projeto
+- A organização dos dados segue o conceito de Data Lake, documentado de forma conceitual
 
-📎 **Evidência:**  
-Dicionário de dados documentado no notebook.
+**Organização conceitual do Data Lake:**
+- **Raw:** arquivos CSV originais, sem tratamento
+- **Staging:** dados tratados, padronizados e com tipos ajustados
+- **Analytics:** camada destinada à modelagem dimensional e consumo analítico
+
+📎 **Evidências:**
+- Print do catálogo de datasets na Dadosfera com descrições preenchidas
+- Dicionário de dados disponível no notebook do projeto
+
+https://app.dadosfera.ai/pt-BR/catalog/data-assets?pipeline_id=aec2673c-8f97-47e8-ba72-f2dc18e898d8&pipeline_name=casetecnico_mariaclara&tags=&asset_types=&page=1&sort=az
+<img width="1226" height="667" alt="image" src="https://github.com/user-attachments/assets/3ff55402-c317-4f2d-addd-8672241b5fb6" />
+
+https://app.dadosfera.ai/pt-BR/catalog/data-assets/80e4a7dd-2120-4a47-bf8d-2eaadbad1b10
+<img width="1529" height="688" alt="image" src="https://github.com/user-attachments/assets/1821fbfb-d592-4ed0-8acc-38a74ebb55b0" />
+
+https://app.dadosfera.ai/pt-BR/catalog/data-assets/23c16621-4138-4447-9f62-acbf1473fc17
+<img width="1524" height="663" alt="image" src="https://github.com/user-attachments/assets/2f4e18ed-1a07-4a92-9d72-24ddc1fc389c" />
+
+https://app.dadosfera.ai/pt-BR/catalog/data-assets/bc9a9d26-23d9-4d0c-af21-dbc7efbd034c
+<img width="1513" height="668" alt="image" src="https://github.com/user-attachments/assets/6a87d324-b2d9-4215-a798-2a0256cbc525" />
+
+https://app.dadosfera.ai/pt-BR/catalog/data-assets/3de32759-694d-47f6-8583-5906f511c379
+<img width="1519" height="675" alt="image" src="https://github.com/user-attachments/assets/5b266459-12ed-42b4-80df-4a798de15a72" />
 
 ---
 
