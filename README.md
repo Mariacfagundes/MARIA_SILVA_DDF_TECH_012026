@@ -43,7 +43,9 @@ Demonstrar um fluxo **end-to-end de dados**, contemplando:
 - Definição das etapas, dependências e status das atividades
 
 🔗 **Kanban Board:**  
-<!https://github.com/users/Mariacfagundes/projects/4-- link do GitHub Projects ou Notion -->
+<https://github.com/users/Mariacfagundes/projects/4>
+<img width="1450" height="695" alt="image" src="https://github.com/user-attachments/assets/d0e0b1a2-d24b-41c3-9a07-f93f2373d7f7" />
+
 
 📎 **Evidência:**  
 Planejamento organizado por status: Backlog, Em andamento, Bloqueado e Concluído.
