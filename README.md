@@ -166,8 +166,6 @@ Os principais problemas encontrados foram tratados na camada de staging.
 
 ## Item 6 — Modelagem de Dados ✅
 
-## Item 6 – Modelagem de Dados
-
 Nesta etapa, os dados foram organizados em um **modelo dimensional no formato estrela**, seguindo os princípios da metodologia **Kimball**.
 
 Foram criadas tabelas de **dimensão** e uma tabela de **fato**, com o objetivo de facilitar análises analíticas e consultas orientadas ao negócio.
