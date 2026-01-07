@@ -96,7 +96,6 @@ https://app.dadosfera.ai/pt-BR/catalog/data-assets/3de32759-694d-47f6-8583-5906f
 
 https://app.dadosfera.ai/pt-BR/catalog/data-assets/23c16621-4138-4447-9f62-acbf1473fc17
 
-
 >
 
 ---
@@ -154,13 +153,27 @@ Os principais problemas encontrados foram tratados na camada de staging.
 
 ---
 
-## Item 5 — GenAI e LLMs 🟡
+## Item 5 – Sobre o uso de GenAI e LLMs (Processar) ✅
 
-**Atividades planejadas:**
-- Exploração de uso de IA sobre dados catalogados
-- Aplicação de GenAI para sumarização ou geração de insights
+Nesta etapa, o objetivo foi demonstrar como dados estruturados podem ser preparados
+para uso em aplicações de GenAI e LLMs, agregando valor ao negócio.
 
-⚠️ Item em desenvolvimento.
+Foi realizada a criação de campos textuais enriquecidos a partir dos dados de produtos,
+combinando informações como nome, categoria e preço em descrições prontas para uso
+em prompts de modelos de linguagem.
+
+Esse tipo de preparação permite casos de uso como:
+- Geração automática de descrições de produtos
+- Sistemas de recomendação baseados em texto
+- Assistentes virtuais para apoio à decisão e experiência do cliente
+
+A abordagem adotada demonstra como a plataforma de dados pode servir como base
+para aplicações de IA, conectando dados estruturados a soluções de GenAI de forma simples
+e escalável.
+
+> Observação: esta etapa representa uma prova de conceito de como os dados tratados
+> podem ser consumidos por LLMs em cenários reais de negócio, como e-commerce
+> e análise de produtos.
 
 ---
 
