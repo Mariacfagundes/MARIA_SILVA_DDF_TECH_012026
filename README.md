@@ -166,16 +166,31 @@ Os principais problemas encontrados foram tratados na camada de staging.
 
 ## Item 6 — Modelagem de Dados ✅
 
-**Atividades realizadas:**
-- Modelagem dimensional baseada na metodologia Kimball
-- Definição de tabelas fato e dimensões
+## Item 6 – Modelagem de Dados
 
-📎 **Evidência:**
-- Dicionário de dados
-- Explicação da modelagem no notebook
+Nesta etapa, os dados foram organizados em um **modelo dimensional no formato estrela**, seguindo os princípios da metodologia **Kimball**.
 
-🎁 **Bônus planejado:**
-- Diagrama visual do modelo dimensional
+Foram criadas tabelas de **dimensão** e uma tabela de **fato**, com o objetivo de facilitar análises analíticas e consultas orientadas ao negócio.
+
+### Dimensões criadas
+- **dim_calendar**: dimensão de tempo, com atributos de ano, mês, trimestre e dia da semana.
+- **dim_product**: dimensão de produtos, contendo informações como nome, cor, custo e preço.
+- **dim_categories**: dimensão de categorias de produto.
+
+### Tabela fato
+- **fact_sales**: tabela central do modelo, contendo as principais métricas de negócio:
+  - `order_quantity`
+  - `revenue`
+  - `margin`
+  - `profit`
+
+A tabela fato se conecta às dimensões por meio das chaves, permitindo análises por tempo, produto e categoria de forma eficiente.
+
+### Diagrama do Modelo Estrela
+
+O diagrama abaixo ilustra a estrutura do modelo dimensional desenvolvido, destacando a tabela fato no centro e suas conexões com as dimensões.
+
+![Modelo Estrela](images/modelo_estrela.png)
 
 ---
 
