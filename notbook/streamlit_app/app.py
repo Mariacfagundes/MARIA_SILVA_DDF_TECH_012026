@@ -5,12 +5,11 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from scipy.spatial.distance import cosine
-from collections import Counter
 import re
+from collections import Counter
 
 # ------------------------------------------------------------
-# Funções auxiliares para similaridade de texto
+# Funções auxiliares para similaridade de texto (usando apenas NumPy)
 # ------------------------------------------------------------
 def text_to_vector(text):
     words = re.findall(r'\w+', text.lower())
@@ -22,7 +21,10 @@ def cosine_sim(text1, text2):
     all_words = set(vec1.keys()).union(set(vec2.keys()))
     v1 = np.array([vec1.get(word, 0) for word in all_words])
     v2 = np.array([vec2.get(word, 0) for word in all_words])
-    return 1 - cosine(v1, v2)
+    dot = np.dot(v1, v2)
+    norm_v1 = np.linalg.norm(v1)
+    norm_v2 = np.linalg.norm(v2)
+    return dot / (norm_v1 * norm_v2) if norm_v1 and norm_v2 else 0.0
 
 # ------------------------------------------------------------
 # Carregar dados (arquivos estão na mesma pasta do app.py)
@@ -45,8 +47,6 @@ st.dataframe(products.head())
 st.subheader("Preço médio por categoria")
 
 # Ajuste de chaves: verifique os nomes reais das colunas nos CSVs
-# Exemplo: se em dim_product.csv a coluna é "ProductCategoryKey"
-# e em dim_categories.csv é "CategoryKey", ajuste abaixo:
 df_cat = products.merge(
     categories,
     left_on="ProductCategoryKey",   # ajuste conforme o nome real da coluna
@@ -58,7 +58,7 @@ df_price_cat = df_cat.groupby("CategoryName")["ProductPrice"].mean().reset_index
 st.bar_chart(df_price_cat.set_index("CategoryName"))
 
 # ------------------------------------------------------------
-# Similaridade entre produtos (usando descrição, sem scikit-learn)
+# Similaridade entre produtos (usando descrição, sem scikit-learn nem SciPy)
 # ------------------------------------------------------------
 st.subheader("Similaridade entre produtos (descrição)")
 
