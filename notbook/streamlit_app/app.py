@@ -63,17 +63,17 @@ product_keys = ["product", "product_id", "productkey", "product_key", "prod_id",
 category_keys = ["category", "category_id", "categorykey", "category_key", "cat_id"]
 date_keys = ["date", "date_id", "datekey", "date_key", "time_id", "calendar_date"]
 
-# Detectando chaves automaticamente
-product_key_fact = detect_key(fact, product_keys)
-product_key_dim = detect_key(dim_prod, product_keys)
+st.subheader("🔗 Unindo tabelas (Star Schema)")
 
-category_key_fact = detect_key(fact, category_keys)
-category_key_dim = detect_key(dim_cat, category_keys)
+# join fact + product
+df = fact.merge(dim_prod, on="product_key", how="left")
 
-date_key_fact = detect_key(fact, date_keys)
-date_key_dim = detect_key(dim_cal, date_keys)
+# join product + category
+df = df.merge(dim_cat, on="category_key", how="left")
 
-st.subheader("🔑 Chaves detectadas")
-st.write("Produto:", product_key_fact, "↔", product_key_dim)
-st.write("Categoria:", category_key_fact, "↔", category_key_dim)
-st.write("Data:", date_key_fact, "↔", date_key_dim)
+# join calendar
+df = df.merge(dim_cal, left_on="order_date", right_on="date", how="left")
+
+st.success("Join realizado com sucesso!")
+
+st.dataframe(df.head(), use_container_width=True)
