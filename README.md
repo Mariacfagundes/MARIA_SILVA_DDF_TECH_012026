@@ -332,8 +332,6 @@ O objetivo desta etapa foi demonstrar a criação de um **Data App funcional** e
 
 ---
 
----
-
 ## Item 10 — Apresentação do Case ✅
 
 **Planejado:**
