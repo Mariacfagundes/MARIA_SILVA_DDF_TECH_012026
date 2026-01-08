@@ -2,7 +2,6 @@
 # ITEM 9 – DATA APP (Exploração com Streamlit)
 # ============================================================
 
-pip install scikit-learn
 import streamlit as st
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
