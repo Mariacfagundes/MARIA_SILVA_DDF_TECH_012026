@@ -11,11 +11,12 @@ st.title("📊 AdventureWorks - Data App (Item 9)")
 # ======================================================
 
 FILES = {
-    "fact_sales": "fact_sales.csv",
-    "dim_product": "dim_product.csv",
-    "dim_categories": "dim_categories.csv",
-    "dim_calendar": "dim_calendar.csv"
+    "fact_sales": "streamlit_app/fact_sales.csv",
+    "dim_product": "streamlit_app/dim_product.csv",
+    "dim_categories": "streamlit_app/dim_categories.csv",
+    "dim_calendar": "streamlit_app/dim_calendar.csv"
 }
+
 
 dfs = {}
 
