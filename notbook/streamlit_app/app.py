@@ -6,13 +6,8 @@ import streamlit as st
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
-import os
 
-# Mostrar diretório atual e arquivos disponíveis (debug)
-st.write("Diretório atual:", os.getcwd())
-st.write("Arquivos disponíveis:", os.listdir(os.getcwd()))
-
-# Carregar dados diretamente da raiz do repositório
+# Carregar dados (agora os arquivos estão na mesma pasta do app.py)
 products = pd.read_csv("dim_product.csv")
 categories = pd.read_csv("dim_categories.csv")
 sales = pd.read_csv("fact_sales.csv")
