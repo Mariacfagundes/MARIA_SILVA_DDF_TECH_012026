@@ -1,84 +1,62 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import plotly.express as px
-from pathlib import Path
 
-st.set_page_config(page_title="Analytics — Sales App", layout="wide")
+st.set_page_config(page_title="AdventureWorks Analytics", layout="wide")
 
-BASE = Path(__file__).parent
+st.title("📊 AdventureWorks - Data App (Item 9)")
 
-st.title("📊 Sales Analytics — Data App")
+# ======================================================
+# Carregamento dos arquivos (fixos)
+# ======================================================
 
-# Carrega datasets automáticos
 FILES = {
     "fact_sales": "fact_sales.csv",
     "dim_product": "dim_product.csv",
     "dim_categories": "dim_categories.csv",
-    "dim_calendar": "dim_calendar.csv",
+    "dim_calendar": "dim_calendar.csv"
 }
 
 dfs = {}
 
-for k, f in FILES.items():
-    p = BASE / f
-    if p.exists():
-        dfs[k] = pd.read_csv(p)
-    else:
-        st.error(f"Arquivo não encontrado: {f}")
+st.subheader("📁 Carregando arquivos")
+for name, path in FILES.items():
+    try:
+        df = pd.read_csv(path)
+        dfs[name] = df
+        st.success(f"Carregado: {path} ({len(df)} linhas)")
+    except Exception as e:
+        st.error(f"Erro ao carregar {path}: {e}")
 
-# Se não carregou tudo, para por aqui
-if len(dfs) < 4:
-    st.stop()
+# ======================================================
+# Mostrar estruturas
+# ======================================================
+st.subheader("🧱 Estrutura das tabelas")
+for name, df in dfs.items():
+    st.write(f"### {name}")
+    st.write("Colunas:", list(df.columns))
+    st.dataframe(df.head(), use_container_width=True)
 
-# Modelo Estrela (Join)
+# ======================================================
+# Função para tentar detectar chave automaticamente
+# ======================================================
+def detect_key(df, keys=["product", "product_id", "productkey", "product_key", "prod_id", "sku"]):
+    cols = df.columns.str.lower()
+    for k in keys:
+        if k.lower() in cols.values:
+            return list(df.columns)[list(cols).index(k)]
+    return None
+
+# Detecta chaves
 fact = dfs["fact_sales"]
 dim_prod = dfs["dim_product"]
 dim_cat = dfs["dim_categories"]
 dim_cal = dfs["dim_calendar"]
 
-df = fact.merge(dim_prod, on="product_id", how="left")
-df = df.merge(dim_cat, on="category_id", how="left")
-df = df.merge(dim_cal, on="date_id", how="left")
+product_key_fact = detect_key(fact)
+product_key_dim = detect_key(dim_prod)
 
-st.subheader("📁 Dados Integrados")
-st.dataframe(df.head(), use_container_width=True)
+category_key_fact = detect_key(fact, ["category", "category_id", "categorykey", "category_key", "cat_id"])
+category_key_dim = detect_key(dim_cat, ["category", "category_id", "categorykey", "category_key", "cat_id"])
 
-# KPIs
-col1, col2, col3, col4 = st.columns(4)
-
-col1.metric("💰 Total Revenue", f"{df['revenue'].sum():,.2f}")
-col2.metric("🛒 Total Units", f"{df['quantity'].sum():,.0f}")
-col3.metric("🎫 Ticket Médio", f"{(df['revenue'].sum()/df['quantity'].sum()):,.2f}")
-col4.metric("📦 Produtos", df['product_id'].nunique())
-
-# Filtros
-st.sidebar.header("Filtros")
-
-cats = st.sidebar.multiselect(
-    "Categorias",
-    sorted(df['category_name'].dropna().unique()),
-    default=sorted(df['category_name'].dropna().unique())
-)
-
-df_f = df[df['category_name'].isin(cats)]
-
-# Gráficos
-tab1, tab2, tab3 = st.tabs(["📈 Time Series", "🏆 Top Produtos", "📂 Categorias"])
-
-with tab1:
-    time_col = "date" if "date" in df_f.columns else None
-    if time_col:
-        ts = df_f.groupby(time_col)['revenue'].sum().reset_index()
-        fig = px.line(ts, x=time_col, y="revenue", title="Revenue Over Time")
-        st.plotly_chart(fig, use_container_width=True)
-
-with tab2:
-    prod = df_f.groupby("product_name")['revenue'].sum().nlargest(10).reset_index()
-    fig = px.bar(prod, x="product_name", y="revenue", title="Top Products")
-    st.plotly_chart(fig, use_container_width=True)
-
-with tab3:
-    cat = df_f.groupby("category_name")['revenue'].sum().reset_index()
-    fig = px.pie(cat, values="revenue", names="category_name", title="Share by Category")
-    st.plotly_chart(fig, use_container_width=True)
+date_key_fact = detect_key(fact, ["date", "date_id", "datekey", "date_key", "ti]()_
