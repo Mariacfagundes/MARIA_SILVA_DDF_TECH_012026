@@ -38,25 +38,20 @@ for name, df in dfs.items():
     st.dataframe(df.head(), use_container_width=True)
 
 # ======================================================
-# Função para tentar detectar chave automaticamente
+# Função auto-detectora de chaves
 # ======================================================
-def detect_key(df, keys=["product", "product_id", "productkey", "product_key", "prod_id", "sku"]):
+def detect_key(df, keys):
     cols = df.columns.str.lower()
     for k in keys:
         if k.lower() in cols.values:
-            return list(df.columns)[list(cols).index(k)]
+            return df.columns[list(cols).index(k)]
     return None
 
-# Detecta chaves
+# Pega tabelas
 fact = dfs["fact_sales"]
 dim_prod = dfs["dim_product"]
 dim_cat = dfs["dim_categories"]
 dim_cal = dfs["dim_calendar"]
 
-product_key_fact = detect_key(fact)
-product_key_dim = detect_key(dim_prod)
-
-category_key_fact = detect_key(fact, ["category", "category_id", "categorykey", "category_key", "cat_id"])
-category_key_dim = detect_key(dim_cat, ["category", "category_id", "categorykey", "category_key", "cat_id"])
-
-date_key_fact = detect_key(fact, ["date", "date_id", "datekey", "date_key", "ti]()_
+# Detecta chaves
+product_key_fact = detect_key(fact, ["product", "product_id", "productkey", "product_key", "prod]()_
