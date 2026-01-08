@@ -232,6 +232,20 @@ O dashboard contempla as seguintes análises:
 
 As análises foram desenvolvidas no módulo de Visualização da Dadosfera (Metabase), utilizando os datasets integrados na plataforma.
 
+## Item 7 – Análise de Dados (Dadosfera)
+
+### Coleção Criada na Dadosfera
+![Coleção](images/colecao.png)
+
+### Análise Geral dos Dados
+![Análise](images/analise.png)
+
+### Distribuição de Produtos por Categoria
+![Produto por Categoria](images/produtocategoria.png)
+
+### Query SQL Utilizada na Análise
+![Query SQL](images/sql.png)
+
 ---
 
 ## Item 8 — Pipelines 🔴
